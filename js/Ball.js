@@ -21,12 +21,12 @@ Ball.prototype.update = function () {
     this.y = this.y + this.velY
 }
 Ball.prototype.collisionDetect = function () {
-    for(let i=0; i<balls.length; i++){
-        if(this !== balls[i]){
+    for (let i = 0; i < balls.length; i++) {
+        if (this !== balls[i]) {
             let dx = this.x - balls[i].x
             let dy = this.y - balls[i].y
             let distabce = Math.sqrt(dx * dx + dy * dy)
-            if(distabce < this.size + balls[i].size){
+            if (distabce < this.size + balls[i].size) {
                 this.color = balls[i].color = randomColor()
             }
         }
@@ -34,7 +34,8 @@ Ball.prototype.collisionDetect = function () {
 }
 
 var balls = []
-var ballTotalCount = 25
+var ballTotalCount = 5
+var start = new Date()
 function loop() {
     ctx.fillStyle = 'rgba(0, 0, 0, 0.25)'
     ctx.fillRect(0, 0, width, height)
@@ -53,8 +54,8 @@ function loop() {
     }
 
     var ballCount = 0
-    for(let i=0; i<balls.length; i++){
-        if(balls[i].exists){
+    for (let i = 0; i < balls.length; i++) {
+        if (balls[i].exists) {
             balls[i].draw()
             balls[i].update()
             balls[i].collisionDetect()
@@ -62,7 +63,10 @@ function loop() {
         }
     }
     p.innerHTML = '剩余: ' + ballCount
-    
+    if(ballCount === 0){
+        var end = new Date()
+    }
+
     evilCircle.draw()
     evilCircle.checkBounds()
     evilCircle.collisionDetect()

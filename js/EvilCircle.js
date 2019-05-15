@@ -24,7 +24,6 @@ EvilCircle.prototype.setControls = function () {
         if(e.key === 'd') this.x += this.velX
         if(e.key === 'w') this.y -= this.velY
         if(e.key === 's') this.y += this.velY
-        console.log(this.y);
     }
 }
 EvilCircle.prototype.collisionDetect = function () {
@@ -40,5 +39,5 @@ EvilCircle.prototype.collisionDetect = function () {
         }
     }
 }
-var evilCircle = new EvilCircle(random(0, width), random(0, height), true, 'wheat', 10)
+var evilCircle = new EvilCircle(random(0, width), random(0, height), true, 'wheat', 20)
 evilCircle.setControls()
