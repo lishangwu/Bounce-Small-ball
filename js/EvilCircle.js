@@ -13,10 +13,10 @@ EvilCircle.prototype.draw = function () {
     ctx.stroke()
 }
 EvilCircle.prototype.checkBounds = function () {
-    this.x + this.size >= width ? this.x -= this.size * 2 : ''
-    this.x - this.size <= 0 ? this.x += this.size * 2 : ''
-    this.y + this.size >= height ? this.y -= this.size * 2 : ''
-    this.y - this.size <= 0 ? this.velY += this.size * 2 : ''
+    this.x + this.size >= width ? this.x -= this.size : ''
+    this.x - this.size <= 0 ? this.x += this.size : ''
+    this.y + this.size >= height ? this.y -= this.size : ''
+    this.y - this.size <= 0 ? this.y += this.size : ''
 }
 EvilCircle.prototype.setControls = function () {
     window.onkeydown = e => {
@@ -24,6 +24,7 @@ EvilCircle.prototype.setControls = function () {
         if(e.key === 'd') this.x += this.velX
         if(e.key === 'w') this.y -= this.velY
         if(e.key === 's') this.y += this.velY
+        console.log(this.y);
     }
 }
 EvilCircle.prototype.collisionDetect = function () {
@@ -39,5 +40,5 @@ EvilCircle.prototype.collisionDetect = function () {
         }
     }
 }
-var evilCircle = new EvilCircle(random(0, width), random(0, height), true, 'wheat', 20)
+var evilCircle = new EvilCircle(random(0, width), random(0, height), true, 'wheat', 10)
 evilCircle.setControls()
