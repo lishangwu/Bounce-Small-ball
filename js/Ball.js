@@ -48,15 +48,19 @@ function loop() {
             randomColor(),
             random(MIN_SIZE, MAX_SIZE)
         )
-        console.log(ball.size);
         balls.push(ball)
     }
 
     for(let i=0; i<balls.length; i++){
-        balls[i].draw()
-        balls[i].update()
-        balls[i].collisionDetect()
+        if(balls[i].exists){
+            balls[i].draw()
+            balls[i].update()
+            balls[i].collisionDetect()
+        }
     }
+    evilCircle.draw()
+    evilCircle.checkBounds()
+    evilCircle.collisionDetect()
     requestAnimationFrame(loop)
 }
 
